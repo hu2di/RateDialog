@@ -2,7 +2,7 @@
 The android library show dialog rate app
 
 ## Screenshot
-<img src="https://raw.githubusercontent.com/hu2di/CheckAppID/master/Screenshot/screenshot.png">
+<img src="https://raw.githubusercontent.com/hu2di/RateDialog/master/screenshot.png">
 
 ## SDK Support
 Support from SDK version 14 onwards
