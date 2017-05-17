@@ -1,5 +1,5 @@
 # RateDialog
-The android library show dialog rate app
+The android library show dialog rate on app and on Google Play Store
 
 ## Screenshot
 <img src="https://raw.githubusercontent.com/hu2di/RateDialog/master/screenshot.png">
