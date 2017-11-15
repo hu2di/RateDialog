@@ -22,19 +22,65 @@ allprojects {
 Step 2. Add the dependency
 ```groovy
 dependencies {
-    compile 'com.github.hu2di:RateDialog:1.0.1'
+    compile 'com.github.hu2di:RateDialog:v1.0.2'
 }
 ```
 
 ### Example
 Add in your activity to show dialog rate
 ```java
-new MyRate(context, R.mipmap.ic_launcher)
+new MyRate(context, 
+	new RateListener() {
+                    @Override
+                    public void oneStar() {                        
+                    }
+
+                    @Override
+                    public void twoStars() {                        
+                    }
+
+                    @Override
+                    public void threeStars() {                        
+                    }
+
+                    @Override
+                    public void fourStars() {                        
+                    }
+
+                    @Override
+                    public void fiveStars() {                        
+                    }
+                },
+	R.mipmap.ic_launcher)
     .show();
 ```
 Change language dialog rate
 ```java
-new MyRate(context, "Comment aimeriez-vous cette application?", R.mipmap.ic_launcher, "Merci")
+new MyRate(context, 
+	new RateListener() {
+                    @Override
+                    public void oneStar() {                       
+                    }
+
+                    @Override
+                    public void twoStars() {                      
+                    }
+
+                    @Override
+                    public void threeStars() {                        
+                    }
+
+                    @Override
+                    public void fourStars() {                        
+                    }
+
+                    @Override
+                    public void fiveStars() {                        
+                    }
+                },
+	"Comment aimeriez-vous cette application?", 
+	R.mipmap.ic_launcher, 
+	"Merci")
     .show();
 ```
 
