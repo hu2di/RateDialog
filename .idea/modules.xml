@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RateDialog.iml" filepath="$PROJECT_DIR$/RateDialog.iml" />
+      <module fileurl="file://D:\Documents\GitHub\RateDialog\RateDialog.iml" filepath="D:\Documents\GitHub\RateDialog\RateDialog.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Documents\GitHub\RateDialog\app\app.iml" filepath="D:\Documents\GitHub\RateDialog\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/myrate/myrate.iml" filepath="$PROJECT_DIR$/myrate/myrate.iml" />
+      <module fileurl="file://D:\Documents\GitHub\RateDialog\myrate\myrate.iml" filepath="D:\Documents\GitHub\RateDialog\myrate\myrate.iml" />
     </modules>
   </component>
 </project>

@@ -18,20 +18,26 @@ import android.widget.TextView;
 public class MyRate {
 
     private Context context;
+    private RateListener rateListener;
 
     private String title = "How would you like this app?";
     private int icon;
-    private boolean isStore = true;
     private int stars = 0;
-    private String rate = "Thanks for your feedback!";
+    private String rate = "Submit";
 
-    public MyRate(@NonNull Context context, @NonNull int icon) {
+    public MyRate(@NonNull Context context, @NonNull RateListener rateListener,
+                  @NonNull int icon) {
         this.context = context;
+        this.rateListener = rateListener;
+
         this.icon = icon;
     }
 
-    public MyRate(@NonNull Context context, @NonNull String title, @NonNull int icon, @NonNull String rateText) {
+    public MyRate(@NonNull Context context, @NonNull RateListener rateListener,
+                  @NonNull String title, @NonNull int icon, @NonNull String rateText) {
         this.context = context;
+        this.rateListener = rateListener;
+
         this.title = title;
         this.icon = icon;
         this.rate = rateText;
@@ -61,9 +67,26 @@ public class MyRate {
         tvRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isStore) {
-                    rateUs();
+                switch (stars) {
+                    case 0:
+                        break;
+                    case 1:
+                        rateListener.oneStar();
+                        break;
+                    case 2:
+                        rateListener.twoStars();
+                        break;
+                    case 3:
+                        rateListener.threeStars();
+                        break;
+                    case 4:
+                        rateListener.fourStars();
+                        break;
+                    case 5:
+                        rateListener.fiveStars();
+                        break;
                 }
+
                 SharePref.putStars(context, stars);
                 dialog.dismiss();
             }
@@ -81,7 +104,6 @@ public class MyRate {
             case 0:
                 break;
             case 1:
-                isStore = false;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -91,7 +113,6 @@ public class MyRate {
                 ivFive.setImageResource(R.drawable.star);
                 break;
             case 2:
-                isStore = false;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -101,7 +122,6 @@ public class MyRate {
                 ivFive.setImageResource(R.drawable.star);
                 break;
             case 3:
-                isStore = false;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -111,7 +131,6 @@ public class MyRate {
                 ivFive.setImageResource(R.drawable.star);
                 break;
             case 4:
-                isStore = true;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -121,7 +140,6 @@ public class MyRate {
                 ivFive.setImageResource(R.drawable.star);
                 break;
             case 5:
-                isStore = true;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -136,7 +154,6 @@ public class MyRate {
             @Override
             public void onClick(View view) {
                 stars = 1;
-                isStore = false;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -151,7 +168,6 @@ public class MyRate {
             @Override
             public void onClick(View view) {
                 stars = 2;
-                isStore = false;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -166,7 +182,6 @@ public class MyRate {
             @Override
             public void onClick(View view) {
                 stars = 3;
-                isStore = false;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -181,7 +196,6 @@ public class MyRate {
             @Override
             public void onClick(View view) {
                 stars = 4;
-                isStore = true;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -196,7 +210,6 @@ public class MyRate {
             @Override
             public void onClick(View view) {
                 stars = 5;
-                isStore = true;
                 rlRate.setVisibility(View.VISIBLE);
 
                 ivOne.setImageResource(R.drawable.stared);
@@ -208,14 +221,5 @@ public class MyRate {
         });
 
         dialog.show();
-    }
-
-    private void rateUs() {
-        final String appPackageName = context.getPackageName(); // getPackageName() from Context or Activity object
-        try {
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
-        } catch (android.content.ActivityNotFoundException anfe) {
-            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
-        }
     }
 }
