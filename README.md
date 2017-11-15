@@ -22,7 +22,7 @@ allprojects {
 Step 2. Add the dependency
 ```groovy
 dependencies {
-    compile 'com.github.hu2di:RateDialog:v1.0.2'
+    compile 'com.github.hu2di:RateDialog:1.0.3'
 }
 ```
 
@@ -75,7 +75,7 @@ new MyRate(context,
                     }
 
                     @Override
-                    public void fiveStars() {                        
+                    public void fiveStars() {                    
                     }
                 },
 	"Comment aimeriez-vous cette application?", 
