@@ -83,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
                         rateUs();
                     }
                 },
-                        "Comment aimeriez-vous cette application?", R.mipmap.ic_launcher, "Merci").show();
+                        "Comment aimeriez-vous cette application?",
+                        R.mipmap.ic_launcher).show();
             }
         });
     }

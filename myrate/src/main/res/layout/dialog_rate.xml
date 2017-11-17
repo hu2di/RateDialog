@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_rec_white"
+    android:background="#ffffff"
     android:orientation="vertical">
 
     <LinearLayout
@@ -78,25 +78,6 @@
                 android:padding="10dp"
                 android:src="@drawable/star" />
         </LinearLayout>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rlRate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tvRate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="Thanks for your feedback!"
-            android:textSize="16sp" />
 
     </RelativeLayout>
 

@@ -23,7 +23,6 @@ public class MyRate {
     private String title = "How would you like this app?";
     private int icon;
     private int stars = 0;
-    private String rate = "Submit";
 
     public MyRate(@NonNull Context context, @NonNull RateListener rateListener,
                   @NonNull int icon) {
@@ -34,13 +33,12 @@ public class MyRate {
     }
 
     public MyRate(@NonNull Context context, @NonNull RateListener rateListener,
-                  @NonNull String title, @NonNull int icon, @NonNull String rateText) {
+                  @NonNull String title, @NonNull int icon) {
         this.context = context;
         this.rateListener = rateListener;
 
         this.title = title;
         this.icon = icon;
-        this.rate = rateText;
     }
 
     public void show() {
@@ -52,46 +50,13 @@ public class MyRate {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_rate);
 
-        TextView tvTitle, tvRate;
+        TextView tvTitle;
         final ImageView ivIcon, ivOne, ivTwo, ivThree, ivFour, ivFive;
-        final RelativeLayout rlRate;
 
         tvTitle = (TextView) dialog.findViewById(R.id.tvTitle);
         tvTitle.setText(title);
         ivIcon = (ImageView) dialog.findViewById(R.id.ivIcon);
         ivIcon.setImageResource(icon);
-
-        rlRate = (RelativeLayout) dialog.findViewById(R.id.rlRate);
-        tvRate = (TextView) dialog.findViewById(R.id.tvRate);
-        tvRate.setText(rate);
-        tvRate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                switch (stars) {
-                    case 0:
-                        break;
-                    case 1:
-                        rateListener.oneStar();
-                        break;
-                    case 2:
-                        rateListener.twoStars();
-                        break;
-                    case 3:
-                        rateListener.threeStars();
-                        break;
-                    case 4:
-                        rateListener.fourStars();
-                        break;
-                    case 5:
-                        rateListener.fiveStars();
-                        break;
-                }
-
-                SharePref.putStars(context, stars);
-                dialog.dismiss();
-            }
-        });
-
 
         ivOne = (ImageView) dialog.findViewById(R.id.ivOne);
         ivTwo = (ImageView) dialog.findViewById(R.id.ivTwo);
@@ -104,8 +69,6 @@ public class MyRate {
             case 0:
                 break;
             case 1:
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.star);
                 ivThree.setImageResource(R.drawable.star);
@@ -113,8 +76,6 @@ public class MyRate {
                 ivFive.setImageResource(R.drawable.star);
                 break;
             case 2:
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.stared);
                 ivThree.setImageResource(R.drawable.star);
@@ -122,8 +83,6 @@ public class MyRate {
                 ivFive.setImageResource(R.drawable.star);
                 break;
             case 3:
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.stared);
                 ivThree.setImageResource(R.drawable.stared);
@@ -131,8 +90,6 @@ public class MyRate {
                 ivFive.setImageResource(R.drawable.star);
                 break;
             case 4:
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.stared);
                 ivThree.setImageResource(R.drawable.stared);
@@ -140,8 +97,6 @@ public class MyRate {
                 ivFive.setImageResource(R.drawable.star);
                 break;
             case 5:
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.stared);
                 ivThree.setImageResource(R.drawable.stared);
@@ -153,70 +108,80 @@ public class MyRate {
         ivOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stars = 1;
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.star);
                 ivThree.setImageResource(R.drawable.star);
                 ivFour.setImageResource(R.drawable.star);
                 ivFive.setImageResource(R.drawable.star);
+
+                stars = 1;
+                SharePref.putStars(context, stars);
+                dialog.dismiss();
+                rateListener.oneStar();
             }
         });
 
         ivTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stars = 2;
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.stared);
                 ivThree.setImageResource(R.drawable.star);
                 ivFour.setImageResource(R.drawable.star);
                 ivFive.setImageResource(R.drawable.star);
+
+                stars = 2;
+                SharePref.putStars(context, stars);
+                dialog.dismiss();
+                rateListener.twoStars();
             }
         });
 
         ivThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stars = 3;
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.stared);
                 ivThree.setImageResource(R.drawable.stared);
                 ivFour.setImageResource(R.drawable.star);
                 ivFive.setImageResource(R.drawable.star);
+
+                stars = 3;
+                SharePref.putStars(context, stars);
+                dialog.dismiss();
+                rateListener.threeStars();
             }
         });
 
         ivFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stars = 4;
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.stared);
                 ivThree.setImageResource(R.drawable.stared);
                 ivFour.setImageResource(R.drawable.stared);
                 ivFive.setImageResource(R.drawable.star);
+
+                stars = 4;
+                SharePref.putStars(context, stars);
+                dialog.dismiss();
+                rateListener.fourStars();
             }
         });
 
         ivFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                stars = 5;
-                rlRate.setVisibility(View.VISIBLE);
-
                 ivOne.setImageResource(R.drawable.stared);
                 ivTwo.setImageResource(R.drawable.stared);
                 ivThree.setImageResource(R.drawable.stared);
                 ivFour.setImageResource(R.drawable.stared);
                 ivFive.setImageResource(R.drawable.stared);
+
+                stars = 5;
+                SharePref.putStars(context, stars);
+                dialog.dismiss();
+                rateListener.fiveStars();
             }
         });
 
