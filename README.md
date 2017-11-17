@@ -22,7 +22,7 @@ allprojects {
 Step 2. Add the dependency
 ```groovy
 dependencies {
-    compile 'com.github.hu2di:RateDialog:1.0.3'
+    compile 'com.github.hu2di:RateDialog:1.0.4'
 }
 ```
 
@@ -79,8 +79,7 @@ new MyRate(context,
                     }
                 },
 	"Comment aimeriez-vous cette application?", 
-	R.mipmap.ic_launcher, 
-	"Merci")
+	R.mipmap.ic_launcher)
     .show();
 ```
 
