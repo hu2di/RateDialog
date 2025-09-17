@@ -22,7 +22,7 @@ allprojects {
 Step 2. Add the dependency
 ```groovy
 dependencies {
-    compile 'com.github.hu2di:RateDialog:1.0.6'
+    implementation 'com.github.hu2di:RateDialog:1.0.6'
 }
 ```
 
