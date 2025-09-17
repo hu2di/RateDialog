@@ -22,7 +22,7 @@ allprojects {
 Step 2. Add the dependency
 ```groovy
 dependencies {
-    compile 'com.github.hu2di:RateDialog:1.0.4'
+    compile 'com.github.hu2di:RateDialog:1.0.5'
 }
 ```
 
@@ -87,4 +87,4 @@ new MyRate(context,
 - Created by HuyHung Dinh
 - GitHub: https://github.com/hu2di
 - Email: hebitaxy@gmail.com
-- Donate: [**paypal.me/hungdh**](https://www.paypal.me/hungdh)
+- Website: https://hu2di.github.io
